@@ -14,6 +14,7 @@ tokens = (
     'SHOW',
     'WHILE',
     'FOR',
+    'IF',
     'COLON',
     'LESSER',
     'GREATER',
@@ -44,4 +45,5 @@ t_EXECUTE = r'->'
 t_INT = r'LICZBA'
 t_WHILE = r'DOPOKI'
 t_FOR = r'PETLA'
+t_IF = r'JEZELI'
 t_SHOW = r'POKAZ'
