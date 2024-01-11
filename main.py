@@ -166,17 +166,20 @@ def p_error(p):
 parser = yacc.yacc()
 
 # Przykładowy pseudokod wejściowy
-pseudocode_input = " LICZBA a = 0 -> LICZBA b = 1 -> LICZBA c = 0 -> PETLA i 0 20: POKAZ(a) -> c = a + b -> a = b -> b = c ->"
+pseudocode_input = " LICZBA a = 0 -> LICZBA b = 1 -> LICZBA c = 0 -> PETLA i 0 20: POKAZ(a) -> c = a + b -> a = b -> b = c "
 
 # Parsowanie pseudokodu
 parsed_code = parser.parse(pseudocode_input)
 
 # Wygenerowanie kodu w Javie na podstawie pseudokodu
-java_code = f'''public class Test {{
-    public static void main(String[] args) {{
-        {parsed_code}
-    }}
-}}'''
+if parsed_code is not None:
+    java_code = f'''public class Test {{
+        public static void main(String[] args) {{
+            {parsed_code}
+        }}
+    }}'''
+else:
+    java_code = "Niepoprawny kod"
 
 print("Wygenerowany kod w Javie:")
 print(java_code)
