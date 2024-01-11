@@ -22,6 +22,7 @@ tokens = (
     'LESSER',
     'GREATER',
     'EQUALS',
+    'IF',
     'GTE',
     'LTE',
     'NEQ',
@@ -54,6 +55,10 @@ def t_INT(t):
 
 def t_WHILE(t):
     r'DOPOKI'
+    return t
+
+def t_IF(t):
+    r'JEZELI'
     return t
 
 def t_FOR(t):
@@ -112,6 +117,7 @@ def p_statement(p):
               | expression EXECUTE
               | ID comparison NUMBER EXECUTE
               | LPAREN ID comparison NUMBER RPAREN EXECUTE
+              | IF ID comparison NUMBER COLON expression EXECUTE
               | WHILE ID comparison NUMBER COLON expression EXECUTE statements
               | FOR ID NUMBER NUMBER COLON expression EXECUTE statements
     '''
@@ -121,6 +127,8 @@ def p_statement(p):
         p[0] = f"while({p[2]} {p[3]} {p[4]}){{\n{p[6]}{p[7]}\n{p[8]}\n}}"
     if p[1] == "PETLA":
         p[0] = f"for(int {p[2]} = {p[3]}; {p[2]} < {p[4]}; {p[2]}++){{\n{p[6]}{p[7]}\n {p[8]}\n}}"
+    if p[1] == "JEZELI":
+        p[0] = f"if({p[2]} {p[3]} {p[4]}){{\n{p[6]}{p[7]}\n}}"
 
 
 def p_comp_op(p):
@@ -141,7 +149,7 @@ def p_expression_arithmetic(p):
                   | expression POWER term
                   | term'''
     if len(p) > 2:
-        p[0] = f"({p[1]} {p[2]} {p[3]})"
+        p[0] = f"{p[1]} {p[2]} {p[3]}"
     else:
         p[0] = p[1]
 
@@ -166,14 +174,14 @@ def p_error(p):
 parser = yacc.yacc()
 
 # Przykładowy pseudokod wejściowy
-pseudocode_input = " LICZBA a = 0 -> LICZBA b = 1 -> LICZBA c = 0 -> PETLA i 0 20: POKAZ(a) -> c = a + b -> a = b -> b = c "
+pseudocode_input = " LICZBA a = 0 -> LICZBA b = 1 -> LICZBA c = 0 -> PETLA i 0 20: POKAZ(a) -> c = a + b -> a = b -> b = c -> JEZELI a == 2: POKAZ(b)->"
 
 # Parsowanie pseudokodu
 parsed_code = parser.parse(pseudocode_input)
 
 # Wygenerowanie kodu w Javie na podstawie pseudokodu
 if parsed_code is not None:
-    java_code = f'''public class Test {{
+    java_code = f'''public class Main {{
         public static void main(String[] args) {{
             {parsed_code}
         }}

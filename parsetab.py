@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'leftPLUSMINUSleftTIMESDIVIDErightPOWERCOLON DIVIDE EQ EQUALS EXECUTE FOR GREATER GTE ID INT LESSER LPAREN LTE MINUS NEQ NUMBER PLUS POWER RPAREN SEMICOLON SHOW TIMES WHILE\n    statements : statements statement\n               | statement\n    \n    statement : INT ID EQ NUMBER EXECUTE\n              | ID EQ expression EXECUTE\n              | expression EXECUTE\n              | ID comparison NUMBER EXECUTE\n              | LPAREN ID comparison NUMBER RPAREN EXECUTE\n              | WHILE ID comparison NUMBER COLON expression EXECUTE statements\n              | FOR ID NUMBER NUMBER COLON expression EXECUTE statements\n    comparison : LESSER\n               | GREATER\n               | EQUALS\n               | GTE\n               | LTE\n               | NEQexpression : expression PLUS term\n                  | expression MINUS term\n                  | expression TIMES term\n                  | expression DIVIDE term\n                  | expression POWER term\n                  | termterm : NUMBER\n            | LPAREN expression RPAREN\n            | IDexpression : SHOW LPAREN ID RPAREN\n                    | SHOW LPAREN NUMBER RPAREN'
+_lr_signature = 'leftPLUSMINUSleftTIMESDIVIDErightPOWERCOLON DIVIDE EQ EQUALS EXECUTE FOR GREATER GTE ID IF INT LESSER LPAREN LTE MINUS NEQ NUMBER PLUS POWER RPAREN SEMICOLON SHOW TIMES WHILE\n    statements : statements statement\n               | statement\n    \n    statement : INT ID EQ NUMBER EXECUTE\n              | ID EQ expression EXECUTE\n              | expression EXECUTE\n              | ID comparison NUMBER EXECUTE\n              | LPAREN ID comparison NUMBER RPAREN EXECUTE\n              | IF ID comparison NUMBER COLON expression EXECUTE\n              | WHILE ID comparison NUMBER COLON expression EXECUTE statements\n              | FOR ID NUMBER NUMBER COLON expression EXECUTE statements\n    comparison : LESSER\n               | GREATER\n               | EQUALS\n               | GTE\n               | LTE\n               | NEQexpression : expression PLUS term\n                  | expression MINUS term\n                  | expression TIMES term\n                  | expression DIVIDE term\n                  | expression POWER term\n                  | termterm : NUMBER\n            | LPAREN expression RPAREN\n            | IDexpression : SHOW LPAREN ID RPAREN\n                    | SHOW LPAREN NUMBER RPAREN'
     
-_lr_action_items = {'INT':([0,1,2,12,22,50,51,57,61,64,65,66,67,],[3,3,-2,-1,-5,-4,-6,-3,-7,3,3,3,3,]),'ID':([0,1,2,3,7,8,9,12,14,22,23,24,25,26,27,28,33,50,51,57,59,60,61,64,65,66,67,],[4,4,-2,13,29,31,32,-1,35,-5,35,35,35,35,35,35,47,-4,-6,-3,35,35,-7,4,4,4,4,]),'LPAREN':([0,1,2,7,11,12,14,22,23,24,25,26,27,28,50,51,57,59,60,61,64,65,66,67,],[7,7,-2,28,33,-1,28,-5,28,28,28,28,28,28,-4,-6,-3,28,28,-7,7,7,7,7,]),'WHILE':([0,1,2,12,22,50,51,57,61,64,65,66,67,],[8,8,-2,-1,-5,-4,-6,-3,-7,8,8,8,8,]),'FOR':([0,1,2,12,22,50,51,57,61,64,65,66,67,],[9,9,-2,-1,-5,-4,-6,-3,-7,9,9,9,9,]),'SHOW':([0,1,2,7,12,14,22,28,50,51,57,59,60,61,64,65,66,67,],[11,11,-2,11,-1,11,-5,11,-4,-6,-3,11,11,-7,11,11,11,11,]),'NUMBER':([0,1,2,7,12,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,32,33,34,43,45,46,50,51,57,59,60,61,64,65,66,67,],[5,5,-2,5,-1,5,37,-10,-11,-12,-13,-14,-15,-5,5,5,5,5,5,5,46,48,49,52,53,54,-4,-6,-3,5,5,-7,5,5,5,5,]),'$end':([1,2,12,22,50,51,57,61,66,67,],[0,-2,-1,-5,-4,-6,-3,-7,-8,-9,]),'EQ':([4,13,],[14,34,]),'EXECUTE':([4,5,6,10,35,36,37,38,39,40,41,42,44,49,55,56,58,62,63,],[-24,-22,22,-21,-24,50,51,-16,-17,-18,-19,-20,-23,57,-25,-26,61,64,65,]),'PLUS':([4,5,6,10,29,30,35,36,38,39,40,41,42,44,55,56,62,63,],[-24,-22,23,-21,-24,23,-24,23,-16,-17,-18,-19,-20,-23,-25,-26,23,23,]),'MINUS':([4,5,6,10,29,30,35,36,38,39,40,41,42,44,55,56,62,63,],[-24,-22,24,-21,-24,24,-24,24,-16,-17,-18,-19,-20,-23,-25,-26,24,24,]),'TIMES':([4,5,6,10,29,30,35,36,38,39,40,41,42,44,55,56,62,63,],[-24,-22,25,-21,-24,25,-24,25,-16,-17,-18,-19,-20,-23,-25,-26,25,25,]),'DIVIDE':([4,5,6,10,29,30,35,36,38,39,40,41,42,44,55,56,62,63,],[-24,-22,26,-21,-24,26,-24,26,-16,-17,-18,-19,-20,-23,-25,-26,26,26,]),'POWER':([4,5,6,10,29,30,35,36,38,39,40,41,42,44,55,56,62,63,],[-24,-22,27,-21,-24,27,-24,27,-16,-17,-18,-19,-20,-23,-25,-26,27,27,]),'LESSER':([4,29,31,],[16,16,16,]),'GREATER':([4,29,31,],[17,17,17,]),'EQUALS':([4,29,31,],[18,18,18,]),'GTE':([4,29,31,],[19,19,19,]),'LTE':([4,29,31,],[20,20,20,]),'NEQ':([4,29,31,],[21,21,21,]),'RPAREN':([5,10,29,30,35,38,39,40,41,42,44,47,48,52,55,56,],[-22,-21,-24,44,-24,-16,-17,-18,-19,-20,-23,55,56,58,-25,-26,]),'COLON':([53,54,],[59,60,]),}
+_lr_action_items = {'INT':([0,1,2,13,23,53,54,61,66,70,71,72,73,74,],[3,3,-2,-1,-5,-4,-6,-3,-7,-8,3,3,3,3,]),'ID':([0,1,2,3,7,8,9,10,13,15,23,24,25,26,27,28,29,35,53,54,61,63,64,65,66,70,71,72,73,74,],[4,4,-2,14,30,32,33,34,-1,37,-5,37,37,37,37,37,37,50,-4,-6,-3,37,37,37,-7,-8,4,4,4,4,]),'LPAREN':([0,1,2,7,12,13,15,23,24,25,26,27,28,29,53,54,61,63,64,65,66,70,71,72,73,74,],[7,7,-2,29,35,-1,29,-5,29,29,29,29,29,29,-4,-6,-3,29,29,29,-7,-8,7,7,7,7,]),'IF':([0,1,2,13,23,53,54,61,66,70,71,72,73,74,],[8,8,-2,-1,-5,-4,-6,-3,-7,-8,8,8,8,8,]),'WHILE':([0,1,2,13,23,53,54,61,66,70,71,72,73,74,],[9,9,-2,-1,-5,-4,-6,-3,-7,-8,9,9,9,9,]),'FOR':([0,1,2,13,23,53,54,61,66,70,71,72,73,74,],[10,10,-2,-1,-5,-4,-6,-3,-7,-8,10,10,10,10,]),'SHOW':([0,1,2,7,13,15,23,29,53,54,61,63,64,65,66,70,71,72,73,74,],[12,12,-2,12,-1,12,-5,12,-4,-6,-3,12,12,12,-7,-8,12,12,12,12,]),'NUMBER':([0,1,2,7,13,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,34,35,36,45,47,48,49,53,54,61,63,64,65,66,70,71,72,73,74,],[5,5,-2,5,-1,5,39,-11,-12,-13,-14,-15,-16,-5,5,5,5,5,5,5,49,51,52,55,56,57,58,-4,-6,-3,5,5,5,-7,-8,5,5,5,5,]),'$end':([1,2,13,23,53,54,61,66,70,73,74,],[0,-2,-1,-5,-4,-6,-3,-7,-8,-9,-10,]),'EQ':([4,14,],[15,36,]),'EXECUTE':([4,5,6,11,37,38,39,40,41,42,43,44,46,52,59,60,62,67,68,69,],[-25,-23,23,-22,-25,53,54,-17,-18,-19,-20,-21,-24,61,-26,-27,66,70,71,72,]),'PLUS':([4,5,6,11,30,31,37,38,40,41,42,43,44,46,59,60,67,68,69,],[-25,-23,24,-22,-25,24,-25,24,-17,-18,-19,-20,-21,-24,-26,-27,24,24,24,]),'MINUS':([4,5,6,11,30,31,37,38,40,41,42,43,44,46,59,60,67,68,69,],[-25,-23,25,-22,-25,25,-25,25,-17,-18,-19,-20,-21,-24,-26,-27,25,25,25,]),'TIMES':([4,5,6,11,30,31,37,38,40,41,42,43,44,46,59,60,67,68,69,],[-25,-23,26,-22,-25,26,-25,26,-17,-18,-19,-20,-21,-24,-26,-27,26,26,26,]),'DIVIDE':([4,5,6,11,30,31,37,38,40,41,42,43,44,46,59,60,67,68,69,],[-25,-23,27,-22,-25,27,-25,27,-17,-18,-19,-20,-21,-24,-26,-27,27,27,27,]),'POWER':([4,5,6,11,30,31,37,38,40,41,42,43,44,46,59,60,67,68,69,],[-25,-23,28,-22,-25,28,-25,28,-17,-18,-19,-20,-21,-24,-26,-27,28,28,28,]),'LESSER':([4,30,32,33,],[17,17,17,17,]),'GREATER':([4,30,32,33,],[18,18,18,18,]),'EQUALS':([4,30,32,33,],[19,19,19,19,]),'GTE':([4,30,32,33,],[20,20,20,20,]),'LTE':([4,30,32,33,],[21,21,21,21,]),'NEQ':([4,30,32,33,],[22,22,22,22,]),'RPAREN':([5,11,30,31,37,40,41,42,43,44,46,50,51,55,59,60,],[-23,-22,-25,46,-25,-17,-18,-19,-20,-21,-24,59,60,62,-26,-27,]),'COLON':([56,57,58,],[63,64,65,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'statements':([0,64,65,],[1,66,67,]),'statement':([0,1,64,65,66,67,],[2,12,2,2,12,12,]),'expression':([0,1,7,14,28,59,60,64,65,66,67,],[6,6,30,36,30,62,63,6,6,6,6,]),'term':([0,1,7,14,23,24,25,26,27,28,59,60,64,65,66,67,],[10,10,10,10,38,39,40,41,42,10,10,10,10,10,10,10,]),'comparison':([4,29,31,],[15,43,45,]),}
+_lr_goto_items = {'statements':([0,71,72,],[1,73,74,]),'statement':([0,1,71,72,73,74,],[2,13,2,2,13,13,]),'expression':([0,1,7,15,29,63,64,65,71,72,73,74,],[6,6,31,38,31,67,68,69,6,6,6,6,]),'term':([0,1,7,15,24,25,26,27,28,29,63,64,65,71,72,73,74,],[11,11,11,11,40,41,42,43,44,11,11,11,11,11,11,11,11,]),'comparison':([4,30,32,33,],[16,45,47,48,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,30 +27,31 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> statements","S'",1,None,None,None),
-  ('statements -> statements statement','statements',2,'p_statements','main.py',100),
-  ('statements -> statement','statements',1,'p_statements','main.py',101),
-  ('statement -> INT ID EQ NUMBER EXECUTE','statement',5,'p_statement','main.py',110),
-  ('statement -> ID EQ expression EXECUTE','statement',4,'p_statement','main.py',111),
-  ('statement -> expression EXECUTE','statement',2,'p_statement','main.py',112),
-  ('statement -> ID comparison NUMBER EXECUTE','statement',4,'p_statement','main.py',113),
-  ('statement -> LPAREN ID comparison NUMBER RPAREN EXECUTE','statement',6,'p_statement','main.py',114),
-  ('statement -> WHILE ID comparison NUMBER COLON expression EXECUTE statements','statement',8,'p_statement','main.py',115),
-  ('statement -> FOR ID NUMBER NUMBER COLON expression EXECUTE statements','statement',8,'p_statement','main.py',116),
-  ('comparison -> LESSER','comparison',1,'p_comp_op','main.py',127),
-  ('comparison -> GREATER','comparison',1,'p_comp_op','main.py',128),
-  ('comparison -> EQUALS','comparison',1,'p_comp_op','main.py',129),
-  ('comparison -> GTE','comparison',1,'p_comp_op','main.py',130),
-  ('comparison -> LTE','comparison',1,'p_comp_op','main.py',131),
-  ('comparison -> NEQ','comparison',1,'p_comp_op','main.py',132),
-  ('expression -> expression PLUS term','expression',3,'p_expression_arithmetic','main.py',137),
-  ('expression -> expression MINUS term','expression',3,'p_expression_arithmetic','main.py',138),
-  ('expression -> expression TIMES term','expression',3,'p_expression_arithmetic','main.py',139),
-  ('expression -> expression DIVIDE term','expression',3,'p_expression_arithmetic','main.py',140),
-  ('expression -> expression POWER term','expression',3,'p_expression_arithmetic','main.py',141),
-  ('expression -> term','expression',1,'p_expression_arithmetic','main.py',142),
-  ('term -> NUMBER','term',1,'p_term','main.py',149),
-  ('term -> LPAREN expression RPAREN','term',3,'p_term','main.py',150),
-  ('term -> ID','term',1,'p_term','main.py',151),
-  ('expression -> SHOW LPAREN ID RPAREN','expression',4,'p_expression_show','main.py',158),
-  ('expression -> SHOW LPAREN NUMBER RPAREN','expression',4,'p_expression_show','main.py',159),
+  ('statements -> statements statement','statements',2,'p_statements','main.py',105),
+  ('statements -> statement','statements',1,'p_statements','main.py',106),
+  ('statement -> INT ID EQ NUMBER EXECUTE','statement',5,'p_statement','main.py',115),
+  ('statement -> ID EQ expression EXECUTE','statement',4,'p_statement','main.py',116),
+  ('statement -> expression EXECUTE','statement',2,'p_statement','main.py',117),
+  ('statement -> ID comparison NUMBER EXECUTE','statement',4,'p_statement','main.py',118),
+  ('statement -> LPAREN ID comparison NUMBER RPAREN EXECUTE','statement',6,'p_statement','main.py',119),
+  ('statement -> IF ID comparison NUMBER COLON expression EXECUTE','statement',7,'p_statement','main.py',120),
+  ('statement -> WHILE ID comparison NUMBER COLON expression EXECUTE statements','statement',8,'p_statement','main.py',121),
+  ('statement -> FOR ID NUMBER NUMBER COLON expression EXECUTE statements','statement',8,'p_statement','main.py',122),
+  ('comparison -> LESSER','comparison',1,'p_comp_op','main.py',135),
+  ('comparison -> GREATER','comparison',1,'p_comp_op','main.py',136),
+  ('comparison -> EQUALS','comparison',1,'p_comp_op','main.py',137),
+  ('comparison -> GTE','comparison',1,'p_comp_op','main.py',138),
+  ('comparison -> LTE','comparison',1,'p_comp_op','main.py',139),
+  ('comparison -> NEQ','comparison',1,'p_comp_op','main.py',140),
+  ('expression -> expression PLUS term','expression',3,'p_expression_arithmetic','main.py',145),
+  ('expression -> expression MINUS term','expression',3,'p_expression_arithmetic','main.py',146),
+  ('expression -> expression TIMES term','expression',3,'p_expression_arithmetic','main.py',147),
+  ('expression -> expression DIVIDE term','expression',3,'p_expression_arithmetic','main.py',148),
+  ('expression -> expression POWER term','expression',3,'p_expression_arithmetic','main.py',149),
+  ('expression -> term','expression',1,'p_expression_arithmetic','main.py',150),
+  ('term -> NUMBER','term',1,'p_term','main.py',157),
+  ('term -> LPAREN expression RPAREN','term',3,'p_term','main.py',158),
+  ('term -> ID','term',1,'p_term','main.py',159),
+  ('expression -> SHOW LPAREN ID RPAREN','expression',4,'p_expression_show','main.py',166),
+  ('expression -> SHOW LPAREN NUMBER RPAREN','expression',4,'p_expression_show','main.py',167),
 ]
