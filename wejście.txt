@@ -1,0 +1,8 @@
+liczba a = 0 ->
+liczba b = 1 ->
+liczba c = 0 ->
+PETLA i 0 20:
+POKAZ(a) ->
+c = a + b ->
+a = b ->
+b = c ->

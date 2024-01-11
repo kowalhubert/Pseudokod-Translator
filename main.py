@@ -180,16 +180,3 @@ java_code = f'''public class Test {{
 
 print("Wygenerowany kod w Javie:")
 print(java_code)
-
-"""
-start
-liczba a = 0 ->
-liczba b = 1 ->
-liczba c = a + b ->
-dla liczba i = 0 do 20 krok 1:
-pokaz(a) ->
-c = a + b ->
-a = b ->
-b = c ->
-koniec
-"""
